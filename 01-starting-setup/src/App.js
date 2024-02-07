@@ -1,4 +1,6 @@
 import ExpenseItem from "./components/Expense/ExpenseItem";
+import ExpenseForm from "./components/Expense/ExpenseForm";
+
 const data = [
   {
     title: "Electricity Bill",
@@ -38,6 +40,7 @@ const App = () => {
           date={expense.date}
         />
       ))}
+      <ExpenseForm />
     </div>
   );
 };
