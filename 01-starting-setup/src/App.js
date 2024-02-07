@@ -36,7 +36,7 @@ function App() {
           amount={expense.amount}
           location={expense.location}
           date={expense.date}
-        ></ExpenseItem>
+        />
       ))}
     </div>
   );
