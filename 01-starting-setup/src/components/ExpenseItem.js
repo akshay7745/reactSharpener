@@ -1,13 +1,17 @@
-function ExpenseItem() {
+import "./ExpenseItem.css";
+
+function ExpenseItem(props) {
+  const { date, location, title, amount } = props;
+
   return (
-    <>
-      <h2>Expense Items</h2>
-      <ul>
-        <li>Food Rs 10</li>
-        <li>Petrol Rs 100</li>
-        <li>Movies Rs 200</li>
-      </ul>
-    </>
+    <div className="expense-item">
+      <div>{date.toLocaleDateString()}</div>
+      <div className="expense-item__description">
+        <h2 className="expense-item__price">{title}</h2>
+        <div>${amount}</div>
+        <h3>{location}</h3>
+      </div>
+    </div>
   );
 }
 
