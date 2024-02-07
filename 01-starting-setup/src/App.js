@@ -1,4 +1,4 @@
-import ExpenseItem from "./components/ExpenseItem";
+import ExpenseItem from "./components/Expense/ExpenseItem";
 const data = [
   {
     title: "Electricity Bill",
@@ -26,7 +26,7 @@ const data = [
   },
 ];
 
-function App() {
+const App = () => {
   return (
     <div>
       <h2>Let's get started!</h2>
@@ -40,6 +40,6 @@ function App() {
       ))}
     </div>
   );
-}
+};
 
 export default App;
