@@ -8,6 +8,25 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
     props.onChangeFilter(selectedYear);
   };
+  let filteredContent = props.expenseData.map((expense, index) => (
+    <ExpenseItem
+      key={expense.id ? expense.id : index}
+      title={expense.title}
+      amount={expense.amount}
+      // location={expense.location}
+      date={expense.date}
+    />
+  ));
+  if (props.expenseData.length === 0) {
+    filteredContent = <p>No expenses found</p>;
+  } else if (props.expenseData.length === 1) {
+    filteredContent = (
+      <>
+        {filteredContent}
+        <p>Only single Expense here. Please add more...</p>
+      </>
+    );
+  }
   return (
     <div>
       <div>
@@ -16,15 +35,7 @@ const Expenses = (props) => {
           onChangeFilter={filterChangedHandler}
         />
       </div>
-      {props.expenseData.map((expense, index) => (
-        <ExpenseItem
-          key={expense.id ? expense.id : index}
-          title={expense.title}
-          amount={expense.amount}
-          // location={expense.location}
-          date={expense.date}
-        />
-      ))}
+      {filteredContent}
     </div>
   );
 };
