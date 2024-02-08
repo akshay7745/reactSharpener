@@ -1,7 +1,6 @@
 import { useState } from "react";
-import ExpenseItem from "./components/Expense/ExpenseItem";
 import NewExpense from "./components/NewExpense/NewExpense";
-
+import Expenses from "./components/Expense/Expenses";
 const data = [
   // {
   //   title: "Electricity Bill",
@@ -33,22 +32,13 @@ const App = () => {
   const [expenseData, setExpenseData] = useState(data);
   const addExpenseHandler = (expense) => {
     setExpenseData((prevState) => {
-      return [...prevState, expense];
+      return [expense, ...prevState];
     });
   };
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <h2>Let's get started!</h2>
-      {expenseData.map((expense, index) => (
-        <ExpenseItem
-          key={expense.id ? expense.id : index}
-          title={expense.title}
-          amount={expense.amount}
-          // location={expense.location}
-          date={expense.date}
-        />
-      ))}
+      <Expenses expenseData={expenseData} />
     </div>
   );
 };
