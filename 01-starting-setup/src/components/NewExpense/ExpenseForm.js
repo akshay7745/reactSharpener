@@ -1,35 +1,38 @@
 import { useState } from "react";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   //   const [enteredTitle, setEnteredTitle] = useState("");
   //   const [enteredAmount, setEnteredAmount] = useState("");
   //   const [enteredDate, setEnteredDate] = useState(new Date(1, 1, 2020));
   const [enteredInput, setEnteredInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
+    title: "",
+    amount: "",
+    date: "",
   });
-  console.log(enteredInput);
+
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(enteredInput);
+    // console.log(enteredInput);
+    props.onSaveExpenseData(enteredInput);
+    setEnteredInput({
+      title: "",
+      amount: "",
+      date: "",
+    });
   };
   const titleChangeHandler = (e) => {
-    // console.log(e.target.value);
     setEnteredInput((prevState) => {
-      return { ...prevState, enteredTitle: e.target.value };
+      return { ...prevState, title: e.target.value };
     });
   };
   const amountChangeHandler = (e) => {
-    // console.log(e.target.value);
     setEnteredInput((prevState) => {
-      return { ...prevState, enteredAmount: e.target.value };
+      return { ...prevState, amount: e.target.value };
     });
   };
   const dateChangeHandler = (e) => {
-    // console.log(e.target.value);
     setEnteredInput((prevState) => {
-      return { ...prevState, enteredDate: e.target.value };
+      return { ...prevState, date: e.target.value };
     });
   };
   return (
@@ -41,6 +44,7 @@ const ExpenseForm = () => {
           id="title"
           type="text"
           onChange={titleChangeHandler}
+          value={enteredInput.title}
         />
       </div>
       <div>
@@ -50,11 +54,18 @@ const ExpenseForm = () => {
           id="amount"
           type="number"
           onChange={amountChangeHandler}
+          value={enteredInput.amount}
         />
       </div>
       <div>
         <label htmlFor="date">Enter Date :</label>
-        <input name="date" id="date" type="date" onChange={dateChangeHandler} />
+        <input
+          name="date"
+          id="date"
+          type="date"
+          onChange={dateChangeHandler}
+          value={enteredInput.date}
+        />
       </div>
       <button type="submit">submit</button>
     </form>

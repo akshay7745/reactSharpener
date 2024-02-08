@@ -6,7 +6,9 @@ import ExpenseDetails from "./ExpenseDetails";
 const ExpenseItem = (props) => {
   const [title, setTitle] = useState(props.title);
   const [amt, setAmt] = useState(props.amount);
-  const { date, location, title1, amount } = props;
+  // const { date, location, title1, amount } = props;
+  const { date, title1, amount } = props;
+  // console.log(date);
   const buttonHandler = (e) => {
     // Removing expenseItem via dom manipulation
     // e.target.parentElement.parentElement.removeChild(e.target.parentElement);
@@ -19,7 +21,8 @@ const ExpenseItem = (props) => {
   return (
     <div className="expense-item">
       <ExpenseDate date={date} />
-      <ExpenseDetails location={location} title={title} amount={amt} />
+      {/* <ExpenseDetails location={location} title={title} amount={amt} /> */}
+      <ExpenseDetails title={title} amount={amt} />
       <button type="button" onClick={buttonHandler}>
         Change title
       </button>
