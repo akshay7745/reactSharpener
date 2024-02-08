@@ -6,21 +6,18 @@ import ExpenseDetails from "./ExpenseDetails";
 const ExpenseItem = (props) => {
   const [title, setTitle] = useState(props.title);
   const [amt, setAmt] = useState(props.amount);
-  // const { date, location, title1, amount } = props;
-  const { date, title1, amount } = props;
-  // console.log(date);
+
   const buttonHandler = (e) => {
     // Removing expenseItem via dom manipulation
     // e.target.parentElement.parentElement.removeChild(e.target.parentElement);
     setTitle("updated!!!");
-    console.log(title);
   };
   const amountButtonHandler = (e) => {
     setAmt(100);
   };
   return (
     <div className="expense-item">
-      <ExpenseDate date={date} />
+      <ExpenseDate date={props.date} />
       {/* <ExpenseDetails location={location} title={title} amount={amt} /> */}
       <ExpenseDetails title={title} amount={amt} />
       <button type="button" onClick={buttonHandler}>
