@@ -9,7 +9,7 @@ const ExpenseForm = (props) => {
     amount: "",
     date: "",
   });
-
+  const [isFormVisible, setIsFormVisible] = useState(false);
   const formSubmitHandler = (e) => {
     e.preventDefault();
     // console.log(enteredInput);
@@ -19,6 +19,7 @@ const ExpenseForm = (props) => {
       amount: "",
       date: "",
     });
+    setIsFormVisible(false);
   };
   const titleChangeHandler = (e) => {
     setEnteredInput((prevState) => {
@@ -35,7 +36,7 @@ const ExpenseForm = (props) => {
       return { ...prevState, date: e.target.value };
     });
   };
-  return (
+  return isFormVisible ? (
     <form onSubmit={formSubmitHandler}>
       <div>
         <label htmlFor="title">Enter Title :</label>
@@ -67,8 +68,28 @@ const ExpenseForm = (props) => {
           value={enteredInput.date}
         />
       </div>
-      <button type="submit">submit</button>
+      <div>
+        <button
+          type="button"
+          onClick={() => {
+            setIsFormVisible(false);
+          }}
+        >
+          Cancel
+        </button>
+        <button type="submit">Add Expense</button>
+      </div>
     </form>
+  ) : (
+    <div>
+      <button
+        onClick={() => {
+          setIsFormVisible(true);
+        }}
+      >
+        Add new Expense
+      </button>
+    </div>
   );
 };
 
