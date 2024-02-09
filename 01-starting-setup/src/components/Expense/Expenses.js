@@ -8,15 +8,18 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
     props.onChangeFilter(selectedYear);
   };
-  let filteredContent = props.expenseData.map((expense, index) => (
-    <ExpenseItem
-      key={expense.id ? expense.id : index}
-      title={expense.title}
-      amount={expense.amount}
-      // location={expense.location}
-      date={expense.date}
-    />
-  ));
+  let filteredContent = props.expenseData.map((expense, index) => {
+    console.log(expense);
+    return (
+      <ExpenseItem
+        key={expense.id ? expense.id : index}
+        title={expense.title}
+        amount={expense.amount}
+        // location={expense.location}
+        date={expense.date}
+      />
+    );
+  });
   if (props.expenseData.length === 0) {
     filteredContent = <p>No expenses found</p>;
   } else if (props.expenseData.length === 1) {

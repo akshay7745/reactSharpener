@@ -6,25 +6,25 @@ const data = [
     title: "Electricity Bill",
     amount: 12,
     location: "Pune",
-    date: new Date(2024, 1, 6),
+    date: "2024-02-06",
   },
   {
     title: "Dinner bill",
     amount: 15,
     location: "Kolhapur",
-    date: new Date(2023, 11, 15),
+    date: "2023-12-15",
   },
   {
     title: "Medicine",
     amount: 20,
     location: "Kolkata",
-    date: new Date(2023, 10, 18),
+    date: "2023-03-06",
   },
   {
     title: "Fuel",
     amount: 17,
     location: "Chennai",
-    date: new Date(2023, 10, 25),
+    date: "2023-11-25",
   },
 ];
 
@@ -42,8 +42,7 @@ const App = () => {
 
   const addFilterHandler = (year) => {
     const filteredData = expenseData.filter((item) => {
-      console.log(+item.date.getFullYear(), +year);
-      return +item.date.getFullYear() === +year;
+      return item.date.split("-")[0] === year;
     });
     // console.log(filteredData);
     setExpenseFilteredData(filteredData);
